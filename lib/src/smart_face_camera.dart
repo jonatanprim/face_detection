@@ -42,7 +42,7 @@ class SmartFaceCamera extends StatefulWidget {
       this.enableAudio = false,
       this.autoCapture = true,
       this.showControls = false,
-      this.showCaptureControl = true,
+      this.showCaptureControl = false,
       this.showFlashControl = false,
       this.showCameraLensControl = false,
       this.message,

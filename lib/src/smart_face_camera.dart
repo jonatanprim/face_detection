@@ -34,16 +34,17 @@ class SmartFaceCamera extends StatefulWidget {
   final IndicatorShape indicatorShape;
   final String? indicatorAssetImage;
   final IndicatorBuilder? indicatorBuilder;
+  final double? width;
 
   const SmartFaceCamera(
       {this.imageResolution = ImageResolution.medium,
       this.defaultCameraLens,
-      this.enableAudio = true,
-      this.autoCapture = false,
-      this.showControls = true,
+      this.enableAudio = false,
+      this.autoCapture = true,
+      this.showControls = false,
       this.showCaptureControl = true,
-      this.showFlashControl = true,
-      this.showCameraLensControl = true,
+      this.showFlashControl = false,
+      this.showCameraLensControl = false,
       this.message,
       this.defaultFlashMode = CameraFlashMode.auto,
       this.orientation = CameraOrientation.portraitUp,
@@ -58,6 +59,7 @@ class SmartFaceCamera extends StatefulWidget {
       this.indicatorShape = IndicatorShape.defaultShape,
       this.indicatorAssetImage,
       this.indicatorBuilder,
+      this.width,
       Key? key})
       : assert(
             indicatorShape != IndicatorShape.image ||
@@ -210,7 +212,7 @@ class _SmartFaceCameraState extends State<SmartFaceCamera>
                 child: FittedBox(
                   fit: BoxFit.fitHeight,
                   child: SizedBox(
-                    width: size.width,
+                    width: widget.width ?? size.width,
                     height: size.width * cameraController.value.aspectRatio,
                     child: Stack(
                       fit: StackFit.expand,

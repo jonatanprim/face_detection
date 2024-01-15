@@ -35,6 +35,7 @@ class SmartFaceCamera extends StatefulWidget {
   final String? indicatorAssetImage;
   final IndicatorBuilder? indicatorBuilder;
   final double? width;
+  final double? height;
 
   const SmartFaceCamera(
       {this.imageResolution = ImageResolution.medium,
@@ -60,6 +61,7 @@ class SmartFaceCamera extends StatefulWidget {
       this.indicatorAssetImage,
       this.indicatorBuilder,
       this.width,
+      this.height,
       Key? key})
       : assert(
             indicatorShape != IndicatorShape.image ||
@@ -213,7 +215,8 @@ class _SmartFaceCameraState extends State<SmartFaceCamera>
                   fit: BoxFit.fitHeight,
                   child: SizedBox(
                     width: widget.width ?? size.width,
-                    height: size.width * cameraController.value.aspectRatio,
+                    height: widget.height ??
+                        size.width * cameraController.value.aspectRatio,
                     child: Stack(
                       fit: StackFit.expand,
                       children: <Widget>[
